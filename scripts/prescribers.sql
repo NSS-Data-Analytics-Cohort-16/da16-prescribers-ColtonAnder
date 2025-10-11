@@ -4,12 +4,12 @@
 
 -- 1. 
 --     a. Which prescriber had the highest total number of claims (totaled over all drugs)? Report the npi and the total number of claims.
-    
+--			1912011792    	4538
 --     b. Repeat the above, but this time report the nppes_provider_first_name, nppes_provider_last_org_name,  specialty_description, and the total number of claims.
-
+--			COFFEY, DAVID, Family Practice, 4538
 -- 2. 
 --     a. Which specialty had the most total number of claims (totaled over all drugs)?
-
+--			
 --     b. Which specialty had the most total number of claims for opioids?
 
 --     c. **Challenge Question:** Are there any specialties that appear in the prescriber table that have no associated prescriptions in the prescription table?
@@ -47,3 +47,10 @@
 --     b. Next, report the number of claims per drug per prescriber. Be sure to include all combinations, whether or not the prescriber had any claims. You should report the npi, the drug name, and the number of claims (total_claim_count).
     
 --     c. Finally, if you have not done so already, fill in any missing values for total_claim_count with 0. Hint - Google the COALESCE function.
+
+SELECT *
+FROM prescriber
+	FULL JOIN prescription
+	USING(npi)
+ORDER BY total_claim_count
+;
